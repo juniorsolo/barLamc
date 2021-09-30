@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LancamentosComponent } from './lancamentos/lancamentos.component';
 import { EstoqueComponent } from './estoque/estoque.component';
+import { ProdutoComponent } from './estoque/produto/produto.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EstoqueComponent } from './estoque/estoque.component';
       HomeComponent,
       AboutComponent,
       LancamentosComponent,
-      EstoqueComponent
+      EstoqueComponent,
+      ProdutoComponent
    ],
   imports: [
     BrowserModule,
