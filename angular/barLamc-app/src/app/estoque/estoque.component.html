@@ -1,8 +1,8 @@
 <div class="container">
-  <div id="alertmsg"class="alert alert-info" role="alert" style="text-align: center;">
+  <div id="alertmsg"class="alert alert-success" role="alert" style="text-align: center; padding-bottom: 0px;">
     <p class="">Sucesso</p>
   </div>
-  <div class="alert alert-info" role="alert" style="text-align: center;">
+  <div class="alert alert-info" role="alert" style="text-align: center;padding-bottom: 0px;">
     <p class="fs-4 fw-bolder">Gerenciamento de Estoque L.A.M.C</p>
   </div>
   <table class="table">
@@ -16,27 +16,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Heineken</td>
-        <td>220</td>
+      <tr *ngFor="let produto of produtos">
+        <th scope="row">{{produto.id}}</th>
+        <td>{{produto.nome}}</td>
+        <td>{{produto.quantidade}}</td>
         <td><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionar">+</button></td>
         <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSubtrair" disabled>-</button></td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Duplo Malte</td>
-        <td>180</td>
-        <td><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionar">+</button></td>
-        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSubtrair" disabled>-</button></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>IPA</td>
-        <td>100</td>
-        <td><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionar">+</button></td>
-        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSubtrair" disabled>-</button></td>
-      </tr>
+
     </tbody>
   </table>
   <div>
