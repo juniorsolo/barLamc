@@ -1,0 +1,22 @@
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col" class="col-md-1">#</th>
+      <th scope="col" class="col-md-5">Produto</th>
+      <th scope="col" class="col-md-2">Quantidade</th>
+      <th scope="col" class="col-md-1">Adicionar</th>
+      <th scope="col" class="col-md-1">Subtrair</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produto of produtos">
+      <th scope="row">{{produto.id}}</th>
+      <td>{{produto.nome}}</td>
+      <td>{{produto.quantidade}}</td>
+      <td><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionar">+</button></td>
+      <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSubtrair" disabled>-</button></td>
+    </tr>
+
+  </tbody>
+</table>
+

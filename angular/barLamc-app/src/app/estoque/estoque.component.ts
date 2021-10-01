@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit, Input  } from '@angular/core';
-import { Produto } from './produto/produto.model';
+import { Produto } from './produtos/produto.model';
+
+
 declare var $:any;
 @Component({
   selector: 'app-estoque',
@@ -9,7 +11,7 @@ declare var $:any;
 export class EstoqueComponent implements OnInit {
 
 
-  produtos: Produto[] = [
+  produtosEst: Produto[] = [
     {
       id: 1,
       nome: 'Heineken',

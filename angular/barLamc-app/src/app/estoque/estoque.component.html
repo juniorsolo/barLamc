@@ -5,110 +5,90 @@
   <div class="alert alert-info" role="alert" style="text-align: center;padding-bottom: 0px;">
     <p class="fs-4 fw-bolder">Gerenciamento de Estoque L.A.M.C</p>
   </div>
-  <table class="table">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col" class="col-md-1">#</th>
-        <th scope="col" class="col-md-5">Produto</th>
-        <th scope="col" class="col-md-2">Quantidade</th>
-        <th scope="col" class="col-md-1">Adicionar</th>
-        <th scope="col" class="col-md-1">Subtrair</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let produto of produtos">
-        <th scope="row">{{produto.id}}</th>
-        <td>{{produto.nome}}</td>
-        <td>{{produto.quantidade}}</td>
-        <td><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionar">+</button></td>
-        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSubtrair" disabled>-</button></td>
-      </tr>
 
-    </tbody>
-  </table>
+  <app-produtos [produtos]="produtosEst"></app-produtos>
+
   <div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-    data-bs-target="#modalIncluirProduto">Incluir novo produto</button> 
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIncluirProduto">Incluir novo produto</button> 
   </div>
 
-   <!-- Modal Adicionar Quantidade-->
-   <div class="modal fade" id="modalAdicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
-   aria-labelledby="staticBackdropLabel" aria-hidden="true">
-     
-     <div class="modal-dialog">
-       <div class="modal-content">
-         
-         <div class="modal-header">
-           <h5 class="modal-title" id="staticBackdropLabel">Adicionar Estoque</h5>  
-         </div>
-         <div class="modal-body">
-           <div class="mb-3">
-             <label for="produto-name" class="col-form-label">Quantidade:</label>
-             <input type="text" class="form-control" id="produto-name">
-           </div>
-         </div>
-         <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
-         </div>
-       </div>
-     </div>
-   </div>
-
-   <!-- Modal Subtrair Quantidade-->
-   <div class="modal fade" id="modalSubtrair" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
-   aria-labelledby="staticBackdropLabel" aria-hidden="true">
-     
-     <div class="modal-dialog">
-       <div class="modal-content">
-         
-         <div class="modal-header">
-           <h5 class="modal-title" id="staticBackdropLabel">Subtrair Estoque</h5>  
-         </div>
-         <div class="modal-body">
-           <div class="mb-3">
-             <label for="produto-name" class="col-form-label">Quantidade:</label>
-             <input type="text" class="form-control" id="produto-name">
-           </div>
-         </div>
-         <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Subtrair</button>
-         </div>
-       </div>
-     </div>
-   </div>
-
   <!-- Modal incluir produto-->
-  <div class="modal fade" id="modalIncluirProduto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    
-    <div class="modal-dialog">
-      <div class="modal-content">
-        
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Incluir Produto</h5>  
+<div class="modal fade" id="modalIncluirProduto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Incluir Produto</h5>  
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="produto-name" class="col-form-label">Nome:</label>
+          <input type="text" class="form-control" id="produto-name"/>
         </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="produto-name" class="col-form-label">Nome:</label>
-            <input type="text" class="form-control" id="produto-name">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Incluir</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Incluir</button>
       </div>
     </div>
   </div>
-  <script>
-  window.setTimeout(function() {
-    $("#alertmsg").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove(); 
-    });
+</div>
+
+ <!-- Modal Adicionar Quantidade-->
+ <div class="modal fade" id="modalAdicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+ aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   
+   <div class="modal-dialog">
+     <div class="modal-content">
+       
+       <div class="modal-header">
+         <h5 class="modal-title" id="staticBackdropLabel">Adicionar Estoque</h5>  
+       </div>
+       <div class="modal-body">
+         <div class="mb-3">
+           <label for="produto-name" class="col-form-label">Quantidade:</label>
+           <input type="text" class="form-control" id="produto-name">
+         </div>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <!-- Modal Subtrair Quantidade-->
+ <div class="modal fade" id="modalSubtrair" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+ aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   
+   <div class="modal-dialog">
+     <div class="modal-content">
+       
+       <div class="modal-header">
+         <h5 class="modal-title" id="staticBackdropLabel">Subtrair Estoque</h5>  
+       </div>
+       <div class="modal-body">
+         <div class="mb-3">
+           <label for="produto-name" class="col-form-label">Quantidade:</label>
+           <input type="text" class="form-control" id="produto-name">
+         </div>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Subtrair</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<script>
+window.setTimeout(function() {
+  $("#alertmsg").fadeTo(500, 0).slideUp(500, function(){
+      $(this).remove(); 
+  });
 }, 2000);
-    </script>
-
-
+  </script>
 </div>
