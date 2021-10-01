@@ -10,6 +10,7 @@ declare var $:any;
 })
 export class EstoqueComponent implements OnInit {
 
+  newProduto: string ="";
 
   produtosEst: Produto[] = [
     {
@@ -30,7 +31,10 @@ export class EstoqueComponent implements OnInit {
 
   ];
 
-  
+  addNewProduto(){
+    console.log('chamou!!!');
+      console.log('nome:'+this.newProduto);
+  }
 
   constructor() { 
 

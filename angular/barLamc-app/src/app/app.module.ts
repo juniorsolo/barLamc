@@ -9,6 +9,7 @@ import { AboutComponent } from './about/about.component';
 import { LancamentosComponent } from './lancamentos/lancamentos.component';
 import { EstoqueComponent } from './estoque/estoque.component';
 import { ProdutosComponent } from './estoque/produtos/produtos.component';
+import { FormsModule, NgModel } from '@angular/forms';
 
 
 
@@ -25,7 +26,8 @@ import { ProdutosComponent } from './estoque/produtos/produtos.component';
    ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
