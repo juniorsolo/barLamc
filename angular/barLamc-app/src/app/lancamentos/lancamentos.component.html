@@ -1,3 +1,51 @@
-<p>
-  lancamentos works!
-</p>
+<div class="container">
+  <!-- Title -->
+  <div class="alert alert-info" role="alert" style="text-align: center;padding-bottom: 0px;">
+    <p class="fs-4 fw-bolder">Lançamento de Consumo</p>
+  </div>
+
+  <!-- Table of consuming-->
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col" class="col-md-1">#Foto</th>
+        <th scope="col" class="col-md-3">Nome</th>
+        <th scope="col" class="col-md-2">Produto</th>
+        <th scope="col" class="col-md-1">Quantidade</th>
+        <th scope="col" class="col-md-1">Adicionar</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <td scope="row">1</td>
+        <td>Coveiro</td>
+        <td>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Escolha um produto...</option>
+            <option value="1">Heineken</option>
+            <option value="2">Duplo Malte</option>
+            <option value="3">Coca Cola</option>
+          </select>
+      </td>
+        <td><input type="number" class="form-control" min="1" max="5" ></td>
+        <td><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionar">+</button></td>
+      </tr>
+      <tr >
+        <td scope="row">2</td>
+        <td>Ticano</td>
+        <td>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Escolha um produto...</option>
+            <option value="1">Heineken</option>
+            <option value="2">Duplo Malte</option>
+            <option value="3">Coca Cola</option>
+          </select>
+        </td>
+        <td><input type="number" class="form-control" min="1" max="5" ></td>
+        <td><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionar">+</button></td>
+      </tr>
+  
+    </tbody>
+  </table>
+</div>
