@@ -25,7 +25,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-body">
         <div class="mb-3">
           <label for="produto-name" class="col-form-label">Nome:</label>
-          <input type="text" class="form-control" id="produto-name" [(ngModel)]="newProduto" />
+          <input type="text" class="form-control" id="produto-name"  [(ngModel)]="newProduto.nome" />
         </div>
       </div>
       <div class="modal-footer">
@@ -49,12 +49,12 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
        <div class="modal-body">
          <div class="mb-3">
            <label for="produto-name" class="col-form-label">Quantidade:</label>
-           <input type="text" class="form-control" id="produto-name">
+           <input type="text" class="form-control" id="produto-name" [(ngModel)]="quantidadeNew">
          </div>
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
+         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addQuantidade()">Adicionar</button>
        </div>
      </div>
    </div>

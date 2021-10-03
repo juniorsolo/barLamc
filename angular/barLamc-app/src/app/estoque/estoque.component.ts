@@ -1,5 +1,7 @@
-import { Component, OnInit, AfterViewInit, Input  } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ViewChild  } from '@angular/core';
+import { ProdutoImpl } from './produtos/produto.Impl.modal';
 import { Produto } from './produtos/produto.model';
+import { ProdutosComponent } from './produtos/produtos.component';
 
 
 declare var $:any;
@@ -10,7 +12,17 @@ declare var $:any;
 })
 export class EstoqueComponent implements OnInit {
 
-  newProduto: string ="";
+  @ViewChild(ProdutosComponent)
+  produtoChild!: ProdutosComponent;
+
+  @Input()
+  newProduto: ProdutoImpl={
+    id: 0,
+    nome: '',
+    quantidade: 0
+  };
+
+  quantidadeNew : number = 0;
 
   produtosEst: Produto[] = [
     {
@@ -33,7 +45,19 @@ export class EstoqueComponent implements OnInit {
 
   addNewProduto(){
     console.log('chamou!!!');
-      console.log('nome:'+this.newProduto);
+    console.log('nome:'+this.newProduto!.nome);
+    this.produtosEst.push(this.newProduto);
+    this.newProduto = {
+      id: 0,
+      nome: '',
+      quantidade: 0
+    };
+  }
+
+  addQuantidade(){
+    console.log('chamou estoque addQtd.' + this.produtoChild.indexSelected);
+     this.produtoChild.adicionaQuantidade(this.quantidadeNew);
+
   }
 
   constructor() { 
