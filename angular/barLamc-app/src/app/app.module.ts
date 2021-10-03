@@ -10,6 +10,7 @@ import { LancamentosComponent } from './lancamentos/lancamentos.component';
 import { EstoqueComponent } from './estoque/estoque.component';
 import { ProdutosComponent } from './estoque/produtos/produtos.component';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -27,7 +28,8 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

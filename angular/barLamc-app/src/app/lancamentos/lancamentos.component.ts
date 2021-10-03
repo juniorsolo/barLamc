@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-lancamentos',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lancamentos.component.css']
 })
 export class LancamentosComponent implements OnInit {
+
+  faCartArrow = faCartArrowDown;
 
   constructor() { }
 
