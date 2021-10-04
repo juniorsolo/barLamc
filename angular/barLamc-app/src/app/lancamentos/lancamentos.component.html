@@ -17,42 +17,25 @@
       </tr>
     </thead>
     <tbody>
-      <tr >
-        <td scope="row">1</td>
-        <td>Coveiro</td>
+      <tr *ngFor="let inte of integrantesLanc">
+        <td scope="row">{{inte.id}}</td>
+        <td>{{inte.nome}}</td>
         <td>
-          <select  class="form-select" [(ngModel)]="lancamento.produto" aria-label="Default select example">
+          <select  class="form-select" [(ngModel)]="lancamento.idProduto" aria-label="Default select example">
             <option [disabled]="true" >Escolha um produto...</option>
-            <option *ngFor="let p of produtosLanc" [ngValue]="p">
-              {{p.nome}}
-            </option>
-          </select>
-      </td>
-        <td><input type="number" class="form-control" min="1" max="5" [(ngModel)]="lancamento.quantidade"></td>
-        <td>
-          <button type="button" class="btn btn-success" (click)="adicionaConsumo()">
-            <fa-icon [icon]="carrinhoCompra"></fa-icon>
-          </button>
-      </td>
-      </tr>
-      <tr >
-        <td scope="row">2</td>
-        <td>Ticano</td>
-        <td>
-          <select class="form-select" (ngModel)="lancamento.produto" aria-label="Default select example">
-            <option [disabled]="true">Escolha um produto...</option>
-            <option *ngFor="let p of produtosLanc" [ngValue]="p">
+            <option *ngFor="let p of produtosLanc" [ngValue]="p.id">
               {{p.nome}}
             </option>
           </select>
         </td>
-        <td><input type="number" class="form-control" min="1" max="5" [(ngModel)]="lancamento.quantidade"></td>
-        <td>
-           <button type="button" class="btn btn-success"  (click)="adicionaConsumo()">
-            <fa-icon [icon]="carrinhoCompra"></fa-icon>
-           </button>
+          <td><input type="number" class="form-control" min="1" max="5" [(ngModel)]="lancamento.quantidade"></td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="adicionaConsumo()">
+              <fa-icon [icon]="carrinhoCompra"></fa-icon>
+            </button>
         </td>
       </tr>
+
   
     </tbody>
   </table>

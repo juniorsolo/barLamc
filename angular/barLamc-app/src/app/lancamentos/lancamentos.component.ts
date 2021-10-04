@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { ProdutoImpl } from '../estoque/produtos/produto.Impl.modal';
 import { Produto } from '../estoque/produtos/produto.model';
+import { Integrante } from './integrante.model';
 import { LancamentoImpl } from './lancamento.impl.model';
 
 
@@ -16,7 +17,7 @@ export class LancamentosComponent implements OnInit {
   seletedProduto!: ProdutoImpl;
   lancamento: LancamentoImpl = {
         idIntegrante: 0, 
-        produto: { id: 0 , nome: '', quantidade:0}, 
+        idProduto: 0, 
         quantidade: 0
   };
 
@@ -39,13 +40,26 @@ export class LancamentosComponent implements OnInit {
 
   ];
 
+  integrantesLanc: Integrante[]=[
+    {
+       id: 10,
+       nome: 'Coveiro',
+       foto: '' 
+    },
+    {
+      id: 20,
+      nome: 'Ticano',
+      foto: '' 
+   }
+  ];
+
   constructor() { }
 
   ngOnInit() {
   }
 
   adicionaConsumo(){
-    console.log('produto id:' + this.lancamento.produto.id + '  qtd:' + this.lancamento.quantidade);
+    console.log('produto id:' + this.lancamento.idProduto + '  qtd:' + this.lancamento.quantidade);
   }
 
 }
