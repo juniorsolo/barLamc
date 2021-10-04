@@ -1,7 +1,9 @@
 import { Produto } from "../estoque/produtos/produto.model";
+import { Integrante } from "./integrante.model";
 
 export interface Lancamento{
-    idIntegrante: number;
-    idProduto: number; 
+    integrante: Integrante;
+    produtos: Produto[];
+    produtoSelecionado: Produto; 
     quantidade: number;
 }

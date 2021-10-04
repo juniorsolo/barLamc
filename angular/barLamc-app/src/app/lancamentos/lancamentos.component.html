@@ -17,20 +17,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let inte of integrantesLanc">
-        <td scope="row">{{inte.id}}</td>
-        <td>{{inte.nome}}</td>
+      <tr *ngFor="let lanc of lancamentos">
+        <td scope="row">{{lanc.integrante.id}}</td>
+        <td>{{lanc.integrante.nome}}</td>
         <td>
-          <select  class="form-select" [(ngModel)]="lancamento.idProduto" aria-label="Default select example">
-            <option [disabled]="true" >Escolha um produto...</option>
-            <option *ngFor="let p of produtosLanc" [ngValue]="p.id">
+          <select  class="form-select" [(ngModel)]="lanc.produtoSelecionado" >
+            <option [disabled]="true" value="0" [selected]>Escolha um produto...</option>
+            <option *ngFor="let p of lanc.produtos" [ngValue]="p">
               {{p.nome}}
             </option>
           </select>
         </td>
-          <td><input type="number" class="form-control" min="1" max="5" [(ngModel)]="lancamento.quantidade"></td>
+          <td><input type="number" class="form-control" min="1" max="12" maxlength="1" defaultValue="0" [(ngModel)]="lanc.quantidade"></td>
           <td>
-            <button type="button" class="btn btn-success" (click)="adicionaConsumo(inte.id)">
+            <button type="button" class="btn btn-success" [disabled]="!validaPreenchimento(lanc)" (click)="adicionaConsumo(lanc)">
               <fa-icon [icon]="carrinhoCompra"></fa-icon>
             </button>
         </td>
