@@ -30,7 +30,7 @@
         </td>
           <td><input type="number" class="form-control" min="1" max="5" [(ngModel)]="lancamento.quantidade"></td>
           <td>
-            <button type="button" class="btn btn-success" (click)="adicionaConsumo()">
+            <button type="button" class="btn btn-success" (click)="adicionaConsumo(inte.id)">
               <fa-icon [icon]="carrinhoCompra"></fa-icon>
             </button>
         </td>
