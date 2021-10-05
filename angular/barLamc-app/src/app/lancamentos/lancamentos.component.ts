@@ -15,20 +15,31 @@ import { Lancamento } from './lancamento.model';
   styleUrls: ['./lancamentos.component.css']
 })
 export class LancamentosComponent implements OnInit {
-
+  /** icone do carrinho */
   carrinhoCompra = faCartPlus;
-
+  /**
+   * Faz parte da tabela de integrantes e produtos para lançamento...
+   */
   lancamentos: Lancamento[]= [];
-
+  
+  /**
+   * Representa os produtos 
+   */
   produtosLanc: Produto[] = [];
 
-  produtoSelecionado!: Produto;
+  lancamentoSelecionado: Lancamento = {
+    integrante: {id:0, nome: '', foto: ''},
+    produtos: [],
+    produtoSelecionado: {id: 0, nome: '', quantidade: 0},
+    quantidade: 0
+};
 
   integrantesLanc: Integrante[]= [];
 
   constructor(private produtoSevice : produtoService) { }
 
   ngOnInit() {
+    console.log('chamou init');
     this.produtosLanc = this.produtoSevice.getAllProdutos();
     this.integrantesLanc = [
       {
@@ -45,13 +56,18 @@ export class LancamentosComponent implements OnInit {
     this.preencheLancamentos();
   }
 
+  lancarConsumo(){
+    console.log('integrante id:' + this.lancamentoSelecionado.integrante.id + ' produto: ' +
+     this.lancamentoSelecionado.produtoSelecionado.nome + " qtd:" + this.lancamentoSelecionado.quantidade  );
+  }
 
 
   adicionaConsumo(lanc: Lancamento){
-    console.log('integrante id:' + lanc.integrante.id + ' produto selec: ' + lanc.produtoSelecionado.nome + " qtd:" + lanc.quantidade  );
+    
     if(lanc.quantidade == null || lanc.quantidade <=0){
-        console.log('Quantidade invalida' + lanc.quantidade);
+        console.log("Quantidade invalida" + lanc.quantidade);
     }
+    this.lancamentoSelecionado = lanc;
     this.preencheLancamentos();
   }
 

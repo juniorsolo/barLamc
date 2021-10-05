@@ -30,13 +30,40 @@
         </td>
           <td><input type="number" class="form-control" min="1" max="12" maxlength="1" defaultValue="0" [(ngModel)]="lanc.quantidade"></td>
           <td>
-            <button type="button" class="btn btn-success" [disabled]="!validaPreenchimento(lanc)" (click)="adicionaConsumo(lanc)">
+            <button type="button" class="btn btn-success" [disabled]="!validaPreenchimento(lanc)" 
+            (click)="adicionaConsumo(lanc)" data-bs-toggle="modal" data-bs-target="#modalConfirmar">
               <fa-icon [icon]="carrinhoCompra"></fa-icon>
             </button>
         </td>
       </tr>
-
-  
     </tbody>
   </table>
+
+   <!-- Modal Confirmar-->
+ <div class="modal fade" id="modalConfirmar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+ aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   
+   <div class="modal-dialog">
+     <div class="modal-content">
+       
+       <div class="modal-header">
+         <h5 class="modal-title" id="staticBackdropLabel">Confirme as informações</h5>  
+       </div>
+       <div class="modal-body">
+         <div class="mb-3">
+           <p class="text-center fs-4"><span class="fw-bold">{{lancamentoSelecionado.quantidade}}  {{lancamentoSelecionado.produtoSelecionado.nome}}</span>
+            para o <span class="fw-bold fst-italic ">{{lancamentoSelecionado.integrante.nome}}</span>
+           </p>   
+         </div>
+         <div class="mb-3">
+          <p class="fs-5 text-center">Os dados estão corretos? </p>
+         </div>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+         <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="lancarConsumo()">Lançar</button>
+       </div>
+     </div>
+   </div>
+ </div>
 </div>
