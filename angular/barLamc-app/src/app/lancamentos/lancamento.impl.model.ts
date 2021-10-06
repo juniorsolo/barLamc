@@ -8,7 +8,7 @@ export class LancamentoImpl implements Lancamento{
         public integrante: Integrante, 
         public produtos: Produto[],
         public produtoSelecionado: Produto, 
-        public quantidade: number){}
+        public quantidade: string){}
 
 
 }

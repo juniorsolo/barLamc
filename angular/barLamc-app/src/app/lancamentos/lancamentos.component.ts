@@ -31,7 +31,7 @@ export class LancamentosComponent implements OnInit {
     integrante: {id:0, nome: '', foto: ''},
     produtos: [],
     produtoSelecionado: {id: 0, nome: '', quantidade: 0},
-    quantidade: 0
+    quantidade: ''
 };
 
   integrantesLanc: Integrante[]= [];
@@ -64,7 +64,7 @@ export class LancamentosComponent implements OnInit {
 
   adicionaConsumo(lanc: Lancamento){
     
-    if(lanc.quantidade == null || lanc.quantidade <=0){
+    if(lanc.quantidade == null || lanc.quantidade <= '0'){
         console.log("Quantidade invalida" + lanc.quantidade);
     }
     this.lancamentoSelecionado = lanc;
@@ -72,15 +72,15 @@ export class LancamentosComponent implements OnInit {
   }
 
   public validaPreenchimento(lanc: Lancamento) : boolean{
-    if(lanc.integrante.id == null || lanc.integrante.id === 0){
+    if(lanc.integrante.id === null || lanc.integrante.id === 0){
       return false;
     }
 
-    if(lanc.produtoSelecionado == null || lanc.produtoSelecionado.id === 0){
+    if(lanc.produtoSelecionado === null || lanc.produtoSelecionado.id === 0){
       return false;
     }
 
-    if(lanc.quantidade == null || lanc.quantidade  <= 0){
+    if(lanc.quantidade === null || lanc.quantidade  === "0" || lanc.quantidade.toString()  === ""){
       return false;
     }
     return true;
@@ -97,7 +97,7 @@ export class LancamentosComponent implements OnInit {
           integrante: i,
           produtos: produtosTemp,
           produtoSelecionado: new ProdutoImpl(0 ,'',0),
-          quantidade: 0
+          quantidade: ''
         }
       );
     }
