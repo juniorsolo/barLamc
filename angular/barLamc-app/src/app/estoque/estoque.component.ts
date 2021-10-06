@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, Input, ViewChild  } from '@angular/core';
+import { faStore } from '@fortawesome/free-solid-svg-icons';
 import { ProdutoImpl } from './produtos/produto.Impl.modal';
 import { Produto } from './produtos/produto.model';
 import { ProdutosComponent } from './produtos/produtos.component';
@@ -11,6 +12,8 @@ declare var $:any;
   styleUrls: ['./estoque.component.css']
 })
 export class EstoqueComponent implements OnInit {
+
+  iconeEstoque = faStore;
 
   @ViewChild(ProdutosComponent)
   produtoChild!: ProdutosComponent;

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { faMinus, faPlus, faStore, faWineBottle } from '@fortawesome/free-solid-svg-icons';
+
 import { Produto } from './produto.model';
 
 @Component({
@@ -6,6 +8,10 @@ import { Produto } from './produto.model';
   templateUrl: './produtos.component.html'
 })
 export class ProdutosComponent implements OnInit {
+
+  iconeProduto = faWineBottle;
+  iconeMais= faPlus;
+  iconeMenos= faMinus;
 
   @Input()
   produtos: Produto[] = [];

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faCartArrowDown, faLaptopCode, faStore, faWarehouse } from '@fortawesome/free-solid-svg-icons';
+import { faCartArrowDown, faLaptopCode, faMoneyCheckAlt, faStore, faWarehouse, faWineBottle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   iconeEstoque = faStore;
   iconeHome = faWarehouse;
   iconeSobre = faLaptopCode;
+  iconeCobranca = faMoneyCheckAlt;
 
   constructor() { }
 

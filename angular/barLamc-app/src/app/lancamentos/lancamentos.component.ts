@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCartArrowDown, faCartPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { ProdutoImpl } from '../estoque/produtos/produto.Impl.modal';
 import { Produto } from '../estoque/produtos/produto.model';
 import { produtoService } from '../estoque/produtos/produto.service';
-import { IntegranteImpl } from './integrante.impl.model';
 import { Integrante } from './integrante.model';
-import { LancamentoImpl } from './lancamento.impl.model';
 import { Lancamento } from './lancamento.model';
 
 
@@ -17,6 +15,7 @@ import { Lancamento } from './lancamento.model';
 export class LancamentosComponent implements OnInit {
   /** icone do carrinho */
   carrinhoCompra = faCartPlus;
+  iconeLancamento = faShoppingCart;
   /**
    * Faz parte da tabela de integrantes e produtos para lançamento...
    */
