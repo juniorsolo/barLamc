@@ -8,8 +8,7 @@ import { ProdutosComponent } from './produtos/produtos.component';
 declare var $:any;
 @Component({
   selector: 'app-estoque',
-  templateUrl: './estoque.component.html',
-  styleUrls: ['./estoque.component.css']
+  templateUrl: './estoque.component.html'
 })
 export class EstoqueComponent implements OnInit {
 

@@ -5,14 +5,16 @@
   </div>
 
   <!-- Table of consuming-->
-  <table class="table">
+  <table class="table  table-hover">
     <thead class="table-dark">
       <tr>
-        <th scope="col" class="col-md-1">#Foto</th>
+        <th scope="col" class="col-md-1">#Id</th>
         <th scope="col" class="col-md-3">Nome</th>
         <th scope="col" class="col-md-2">Produto</th>
         <th scope="col" class="col-md-1">Quantidade</th>
-        <th scope="col" class="col-md-1">Adicionar</th>
+        <th scope="col" class="col-md-1 text-center">Adicionar</th>
+        <th scope="col" class="col-md-1 text-center">Subtrair</th>
+        <th scope="col" class="col-md-1">Consumir</th>
 
       </tr>
     </thead>
@@ -28,12 +30,20 @@
             </option>
           </select>
         </td>
-          <td><input type="text" class="form-control" min="1" max="12" maxlength="2" pattern = "[0-9]"  [(ngModel)]="lanc.quantidade"></td>
-          <td>
-            <button type="button" class="btn btn-success" [disabled]="!validaPreenchimento(lanc)" 
+        <td>
+          <input type="text" class="form-control text-center" min="1" max="12" maxlength="2" pattern = "[0-9]" [disabled]="true"  [(ngModel)]="lanc.quantidade">
+        </td>
+        <td class="text-center">
+          <button type="button" class="btn btn-success" style="width: 80px;"><fa-icon [icon]="iconeMais"></fa-icon></button>
+        </td>
+        <td class="text-center">
+          <button type="button" class="btn btn-danger" style="width: 70px;"><fa-icon [icon]="iconeMenos"></fa-icon></button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-success" [disabled]="!validaPreenchimento(lanc)" 
             (click)="adicionaConsumo(lanc)" data-bs-toggle="modal" data-bs-target="#modalConfirmar">
               <fa-icon [icon]="carrinhoCompra"></fa-icon>
-            </button>
+          </button>
         </td>
       </tr>
     </tbody>

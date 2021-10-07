@@ -11,19 +11,24 @@ import { EstoqueComponent } from './estoque/estoque.component';
 import { ProdutosComponent } from './estoque/produtos/produtos.component';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PagamentosComponent } from './pagamentos/pagamentos.component';
+import { CobrancasComponent } from './cobrancas/cobrancas.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
 @NgModule({
-  declarations: [						
+  declarations: [									
     AppComponent,
       HeaderComponent,
       HomeComponent,
       AboutComponent,
       LancamentosComponent,
       EstoqueComponent,
-      ProdutosComponent
-      
+      ProdutosComponent,
+      PagamentosComponent,
+      CobrancasComponent,
+      PageNotFoundComponent
    ],
   imports: [
     BrowserModule,

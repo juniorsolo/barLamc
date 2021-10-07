@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faCartArrowDown, faCartPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faCartArrowDown, faCartPlus, faMinus, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { ProdutoImpl } from '../estoque/produtos/produto.Impl.modal';
 import { Produto } from '../estoque/produtos/produto.model';
 import { produtoService } from '../estoque/produtos/produto.service';
@@ -13,9 +13,12 @@ import { Lancamento } from './lancamento.model';
   styleUrls: ['./lancamentos.component.css']
 })
 export class LancamentosComponent implements OnInit {
-  /** icone do carrinho */
+  /** icones */
   carrinhoCompra = faCartPlus;
   iconeLancamento = faShoppingCart;
+  iconeMais= faPlus;
+  iconeMenos= faMinus;
+
   /**
    * Faz parte da tabela de integrantes e produtos para lançamento...
    */
@@ -50,7 +53,12 @@ export class LancamentosComponent implements OnInit {
         id: 20,
         nome: 'Ticano',
         foto: '' 
-     }
+     },
+     {
+      id: 30,
+      nome: 'Marcelino',
+      foto: '' 
+   }
     ];
     this.preencheLancamentos();
   }
