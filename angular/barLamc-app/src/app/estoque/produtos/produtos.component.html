@@ -14,11 +14,11 @@
       <td>{{produto.nome}}</td>
       <td>{{produto.quantidade}}</td>
       <td>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionar" (click)="selecionaIndex(i)">
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalAdicionar" (click)="selecionaIndex(i)">
           <fa-icon [icon]="iconeMais"></fa-icon>
         </button>
       </td>
-      <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSubtrair" disabled>
+      <td><button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalSubtrair" disabled>
             <fa-icon [icon]="iconeMenos"></fa-icon>
           </button>
       </td>

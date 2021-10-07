@@ -1,3 +1,24 @@
-<p>
-  home
-</p>
+<div class="container">
+
+  <div class="alert alert-info shadow-lg" role="alert" style="text-align: center;padding-bottom: 0px;">
+    <p class="fs-4 fw-bolder font-monospace">Bem vindo ao</p>
+    <p class="fs-1 fw-bolder">L.A.M.C &nbsp; BAR</p>
+    <p class="fs-1"> 
+      <fa-icon [icon]="iconeGarrafa"></fa-icon>&nbsp;
+      <fa-icon [icon]="iconeTacaVinho"></fa-icon>&nbsp;
+      <fa-icon [icon]="iconeCopoMartini"></fa-icon>&nbsp;
+      <fa-icon [icon]="iconeCopoWhiskey"></fa-icon>&nbsp;
+      <fa-icon [icon]="iconeBar"></fa-icon>
+    </p>
+    <div class="pb-5 pt-1 ">
+      <a routerLink="/lancamentos" class="btn btn-success mx-2 fw-bolder fs-5" style="width: 200px;">
+        Consumir <fa-icon [icon]="iconeConsumir"></fa-icon>
+      </a>
+      <button type="button" class="btn btn-danger mx-2 fw-bolder fs-5" style="width: 200px;">
+        Pagar <fa-icon [icon]="iconeCobrar"></fa-icon>
+      </button>
+    </div>
+  </div>
+
+
+</div>
