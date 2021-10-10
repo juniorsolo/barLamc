@@ -1,6 +1,63 @@
 <div class="container">
-  <p>
-    cobrancas works!
-  </p>
 
+  <!-- Title -->
+  <div class="alert alert-info" role="alert" style="text-align: center;padding-bottom: 0px;">
+    <p class="fs-4 fw-bolder">Cobrança mensal dos integrantes <fa-icon [icon]="iconeCobrancaTitulo"></fa-icon></p>
+  </div>
+
+  <!-- Botoes de mes e ano -->
+  <div class="row justify-content-md-center">
+    <div class="col-2">
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Escolha o Mês</option>
+        <option value="1">Janeiro</option>
+        <option value="2">Fevereiro</option>
+        <option value="3">Março</option>
+        <option value="3">Abril</option>
+        <option value="3">Maio</option>
+        <option value="3">Junho</option>
+        <option value="3">Julho</option>
+        <option value="3">Agosto</option>
+        <option value="3">Setembro</option>
+        <option value="3">Outubro</option>
+        <option value="3">Novembro</option>
+        <option value="3">Dezembro</option>
+      </select>
+    </div>
+    <div class="col-2">
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Escolha o ano</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+      </select>
+    </div>
+    <div class="col-2">
+      <button type="button" class="btn btn-primary" style="height: 47px; width: 80px;">Buscar</button>
+    </div>
+  </div>
+
+  <!-- Tabela de cobranca-->
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col" class="col-md-1">#Id</th>
+        <th scope="col" class="col-md-3">Nome</th>
+        <th scope="col" class="col-md-2">Valor Total</th>
+        <th scope="col" class="col-md-2">Pagar conta</th>
+        <th scope="col" class="col-md-2">Detalhe</th>
+    </thead>
+    <tbody>
+      <tr >
+        <td scope="row">1</td>
+        <td>coveiro</td>
+        <td>75,00</td>
+        <td>
+          <button type="button" class="btn btn-success" style="width: 80px;">Pagar</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-warning" style="width: 80px;">Detalhe</button>
+        </td>
+      </tr>
+    </tbody> 
+  </table>
 </div>

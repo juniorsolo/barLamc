@@ -83,7 +83,7 @@
           </div>
        </ng-template>
        <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" *ngIf="lancamentoSelecionado.integrante.id != 0"  (click)="limparLancamentoSelecionado()">Não melhor Cancelar</button>
+         <button type="button" class="btn btn-danger" data-bs-dismiss="modal" *ngIf="lancamentoSelecionado.integrante.id != 0"  (click)="limparLancamentoSelecionado()">Não melhor Cancelar</button>
          <button type="button" class="btn btn-success" data-bs-dismiss="modal" *ngIf="lancamentoSelecionado.integrante.id != 0" (click)="lancarConsumo()">Sim Lançar</button>
        </div>
      </div>
