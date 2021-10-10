@@ -5,5 +5,5 @@ export interface Lancamento{
     integrante: Integrante;
     produtos: Produto[];
     produtoSelecionado: Produto; 
-    quantidade: string;
+    quantidade: number;
 }

@@ -31,17 +31,21 @@
           </select>
         </td>
         <td>
-          <input type="text" class="form-control text-center" min="1" max="12" maxlength="2" pattern = "[0-9]" [disabled]="true"  [(ngModel)]="lanc.quantidade">
+          <input type="number" class="form-control text-center" [disabled]="true"  [(ngModel)]="lanc.quantidade">
         </td>
         <td class="text-center">
-          <button type="button" class="btn btn-success" style="width: 80px;"><fa-icon [icon]="iconeMais"></fa-icon></button>
+          <button type="button" class="btn btn-success" style="width: 80px;"  (click)="adicionaConsumo(lanc)">
+            <fa-icon [icon]="iconeMais"></fa-icon>
+          </button>
         </td>
         <td class="text-center">
-          <button type="button" class="btn btn-danger" style="width: 70px;"><fa-icon [icon]="iconeMenos"></fa-icon></button>
+          <button type="button" class="btn btn-danger" style="width: 70px;" [disabled]="desabilitaSubtrair(lanc)"  (click)="subtraiConsumo(lanc)">
+            <fa-icon [icon]="iconeMenos" ></fa-icon>
+          </button>
         </td>
         <td>
           <button type="button" class="btn btn-success" [disabled]="!validaPreenchimento(lanc)" 
-            (click)="adicionaConsumo(lanc)" data-bs-toggle="modal" data-bs-target="#modalConfirmar">
+               data-bs-toggle="modal" data-bs-target="#modalConfirmar" (click)="preparaLancamentoParaEnvio(lanc)">
               <fa-icon [icon]="carrinhoCompra"></fa-icon>
           </button>
         </td>
@@ -57,21 +61,30 @@
      <div class="modal-content">
        
        <div class="modal-header">
-         <h5 class="modal-title" id="staticBackdropLabel">Confirme as informações</h5>  
+         <h5 class="modal-title" id="staticBackdropLabel">Atenção confirme as informações <fa-icon [icon]="iconeAtencao" ></fa-icon></h5>  
        </div>
-       <div class="modal-body">
+       <div></div>
+       <div class="modal-body" *ngIf="lancamentoSelecionado.integrante.id != 0 ; else burlarInfo">
          <div class="mb-3">
-           <p class="text-center fs-4"><span class="fw-bold">{{lancamentoSelecionado.quantidade}}  {{lancamentoSelecionado.produtoSelecionado.nome}}</span>
-            para o <span class="fw-bold fst-italic ">{{lancamentoSelecionado.integrante.nome}}</span>
+           <p class="text-center fs-4"><span class="fw-bold text-danger">{{lancamentoSelecionado.quantidade}}  {{lancamentoSelecionado.produtoSelecionado.nome}}</span>
+            para o <span class="fw-bold fst-italic text-danger">{{lancamentoSelecionado.integrante.nome}}</span>
            </p>   
          </div>
          <div class="mb-3">
           <p class="fs-5 text-center">Os dados estão corretos? </p>
          </div>
        </div>
+       <ng-template #burlarInfo>
+          <div class="modal-body">
+            <div class="mb-3">
+              <p class="text-center fs-4"><span class="fw-bold text-danger">Tentativa de burlar o sistema detectada.... isso será reportado</span>       
+              </p>   
+            </div>
+          </div>
+       </ng-template>
        <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-         <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="lancarConsumo()">Lançar</button>
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" *ngIf="lancamentoSelecionado.integrante.id != 0"  (click)="limparLancamentoSelecionado()">Não melhor Cancelar</button>
+         <button type="button" class="btn btn-success" data-bs-dismiss="modal" *ngIf="lancamentoSelecionado.integrante.id != 0" (click)="lancarConsumo()">Sim Lançar</button>
        </div>
      </div>
    </div>
