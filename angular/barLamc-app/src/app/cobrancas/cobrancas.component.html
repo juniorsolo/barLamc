@@ -10,25 +10,13 @@
     <div class="col-2">
       <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
         <option selected>Escolha o Mês</option>
-        <option value="1">Janeiro</option>
-        <option value="2">Fevereiro</option>
-        <option value="3">Março</option>
-        <option value="4">Abril</option>
-        <option value="5">Maio</option>
-        <option value="6">Junho</option>
-        <option value="7">Julho</option>
-        <option value="8">Agosto</option>
-        <option value="9">Setembro</option>
-        <option value="10">Outubro</option>
-        <option value="11">Novembro</option>
-        <option value="12">Dezembro</option>
+        <option *ngFor="let m of getMonth()" [ngValue]="m.id">{{m.descricao}}</option>
       </select>
     </div>
     <div class="col-2">
       <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
         <option selected>Escolha o ano</option>
-        <option value="2020">2020</option>
-        <option value="2021">2021</option>
+        <option *ngFor="let a of getYears()" [ngValue]="a">{{a}}</option>
       </select>
     </div>
     <div class="col-2">
@@ -69,9 +57,11 @@
           <button type="button" class="btn btn-success" style="width: 80px;">Pagar</button>
         </td>
         <td>
-          <button type="button" class="btn btn-warning" style="width: 80px;">Detalhe</button>
+          <button type="button" class="btn btn-warning" style="width: 80px;" (click)="goToDetail()">Detalhe</button>
         </td>
       </tr>
     </tbody> 
   </table>
+
+  <!-- <router-outlet></router-outlet> -->
 </div>
