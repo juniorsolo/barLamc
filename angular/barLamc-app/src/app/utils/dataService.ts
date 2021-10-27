@@ -33,7 +33,6 @@ export class dataService{
         this.anosBusca = [];
         this.anosBusca.push(data.getFullYear());
         this.anosBusca.push(data.getFullYear() - 1);
-        console.log("ano:"+ this.anosBusca.toString());
         return this.anosBusca;
     }
 }

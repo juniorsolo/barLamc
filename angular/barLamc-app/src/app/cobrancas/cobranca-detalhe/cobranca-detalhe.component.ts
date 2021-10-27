@@ -10,6 +10,8 @@ export class CobrancaDetalheComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    const heroId = this.route.snapshot.paramMap.get('id');
+    console.log('id detalhe:'+ heroId);
   }
 
  
