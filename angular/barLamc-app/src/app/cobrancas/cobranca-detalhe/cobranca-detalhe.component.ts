@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -7,12 +7,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CobrancaDetalheComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
 
+  @Output() newItemEvent = new EventEmitter<boolean>();
+
+  
+  constructor(private route: ActivatedRoute, private router: Router) { }
+  
   ngOnInit() {
     const heroId = this.route.snapshot.paramMap.get('id');
-    console.log('id detalhe:'+ heroId);
   }
-
- 
+  
+  addNewItem(value: boolean) {
+    this.newItemEvent.emit(value);
+  }
 }

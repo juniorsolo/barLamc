@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
 import { dataService } from '../utils/dataService';
 import { Month } from '../utils/month.model';
+import { CobrancaDetalheComponent } from './cobranca-detalhe/cobranca-detalhe.component';
 
 @Component({
   selector: 'app-cobrancas',
@@ -15,15 +16,27 @@ export class CobrancasComponent implements OnInit {
 
   dataAtual = new Date();
 
+  anoSelecionado : number = 0;
+  mesSelecionado : string = "undefined";
+  exibirDetalhe : boolean = false;
+
 
   constructor(private dataService : dataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-
+ 
   }
 
   public goToDetail() {
+    console.log("go detail:" + this.anoSelecionado + " - " + this.mesSelecionado);
+    this.exibirDetalhe = true;
     this.router.navigate( [1 ,'detalhe'], {relativeTo:this.route});
+    
+  }
+
+  public desabilitaBuscar() : boolean{
+    return this.anoSelecionado === 0 || this.mesSelecionado == '' || this.mesSelecionado == 'undefined' ? true : false;
+    
   }
 
   public getMonth() : Month[] {

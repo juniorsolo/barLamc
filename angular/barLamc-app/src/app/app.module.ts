@@ -14,6 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PagamentosComponent } from './pagamentos/pagamentos.component';
 import { CobrancasComponent } from './cobrancas/cobrancas.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CobrancaDetalheComponent } from './cobrancas/cobranca-detalhe/cobranca-detalhe.component';
 
 
 
@@ -28,6 +29,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       ProdutosComponent,
       PagamentosComponent,
       CobrancasComponent,
+      CobrancaDetalheComponent,
       PageNotFoundComponent
    ],
   imports: [
