@@ -1,6 +1,6 @@
 <div class="container">
 
-  <ng-template [ngIf]="!exibirDetalhe">
+  <div *ngIf="!exibirDetalhe">
     <!-- Title -->
     <div class="alert alert-info" role="alert" style="text-align: center;padding-bottom: 0px;">
       <p class="fs-4 fw-bolder">Cobrança mensal dos integrantes <fa-icon [icon]="iconeCobrancaTitulo"></fa-icon></p>
@@ -51,7 +51,9 @@
       </thead>
       <tbody>
         <tr>
-          <td scope="row">1</td>
+          <td scope="row">
+            <label value="1" ></label>
+          </td>
           <td>coveiro</td>
           <td>75,00</td>
           <td>
@@ -63,11 +65,14 @@
         </tr>
       </tbody> 
     </table>
-</ng-template>
+   
+  </div>
+  
+  <!-- Exibe o detalhe da cobranca-->
+  <div *ngIf="exibirDetalhe">
+    <button type="button" class="btn btn-warning" style="width: 80px;" (click)="backToCobranca()">Voltar</button>
+    <app-cobranca-detalhe [idIntegrante] = "id"></app-cobranca-detalhe>
+  </div>
 
-<!-- Exibe o detalhe da cobranca-->
-<ng-template [ngIf]="exibirDetalhe">
-    <app-cobranca-detalhe></app-cobranca-detalhe>
-</ng-template>
- 
+
 </div>

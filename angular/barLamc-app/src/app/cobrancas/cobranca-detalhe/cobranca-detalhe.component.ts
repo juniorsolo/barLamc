@@ -8,16 +8,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CobrancaDetalheComponent implements OnInit {
 
 
-  @Output() newItemEvent = new EventEmitter<boolean>();
+  @Input()
+  idIntegrante: number = 0;
 
   
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor() { 
+  }
   
   ngOnInit() {
-    const heroId = this.route.snapshot.paramMap.get('id');
+    // const heroId = this.route.snapshot.paramMap.get('id');
+    console.log('id do integrante detalhe:'+this.idIntegrante);
   }
   
-  addNewItem(value: boolean) {
-    this.newItemEvent.emit(value);
-  }
+
 }

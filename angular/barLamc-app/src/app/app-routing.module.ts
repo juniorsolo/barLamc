@@ -16,7 +16,6 @@ const routes: Routes = [
   {path:'pagamentos', component: PagamentosComponent},
   {path:'estoque', component: EstoqueComponent},
   {path:'cobranca', component: CobrancasComponent},
-  {path:'cobranca/:id/detalhe', component: CobrancaDetalheComponent},
   {path:'about', component: AboutComponent},
   {path:'**', component: PageNotFoundComponent}
 ];

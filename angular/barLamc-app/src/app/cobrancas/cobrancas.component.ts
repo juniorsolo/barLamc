@@ -16,6 +16,8 @@ export class CobrancasComponent implements OnInit {
 
   dataAtual = new Date();
 
+  id : number =111;
+
   anoSelecionado : number = 0;
   mesSelecionado : string = "undefined";
   exibirDetalhe : boolean = false;
@@ -30,8 +32,12 @@ export class CobrancasComponent implements OnInit {
   public goToDetail() {
     console.log("go detail:" + this.anoSelecionado + " - " + this.mesSelecionado);
     this.exibirDetalhe = true;
-    this.router.navigate( [1 ,'detalhe'], {relativeTo:this.route});
+    //this.router.navigate( ['detalhe'], {relativeTo:this.route});
     
+  }
+
+  public backToCobranca(){
+    this.exibirDetalhe = false;
   }
 
   public desabilitaBuscar() : boolean{
