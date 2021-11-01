@@ -6,9 +6,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagamentosComponent implements OnInit {
 
+  dataSelecionada : Date = new Date();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  buscarDevedores(){
+    console.log(this.dataSelecionada.toJSON());
+  }
 }

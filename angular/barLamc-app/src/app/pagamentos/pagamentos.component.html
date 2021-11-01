@@ -1,6 +1,14 @@
 <div class="container">
   
-  <p>
-    pagamentos works!
-  </p>
+  <!-- Title -->
+  <div class="alert alert-info" role="alert" style="text-align: center;padding-bottom: 0px;">
+    <p class="fs-4 fw-bolder">Pagamentos de Integrantes </p>
+  </div>
+
+  <div class="p-field p-col-12 p-md-5 text-center">
+    <label for="icon">Selecione a data: </label>
+    <p-calendar [(ngModel)]="dataSelecionada" dateFormat="dd/mm/yy" [showIcon]="true" inputId="icon"></p-calendar>
+    <button type="button" class="btn btn-success" style="width: 80px; margin-left: 10px;"  (click)="buscarDevedores()">Buscar
+    </button>
+  </div>
 </div>

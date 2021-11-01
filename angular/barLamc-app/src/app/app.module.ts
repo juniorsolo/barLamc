@@ -15,8 +15,8 @@ import { PagamentosComponent } from './pagamentos/pagamentos.component';
 import { CobrancasComponent } from './cobrancas/cobrancas.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CobrancaDetalheComponent } from './cobrancas/cobranca-detalhe/cobranca-detalhe.component';
-
-
+import {CalendarModule} from 'primeng/calendar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [									
@@ -36,7 +36,9 @@ import { CobrancaDetalheComponent } from './cobrancas/cobranca-detalhe/cobranca-
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
