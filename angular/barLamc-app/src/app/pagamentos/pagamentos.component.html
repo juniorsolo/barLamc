@@ -1,14 +1,49 @@
 <div class="container">
-  
-  <!-- Title -->
-  <div class="alert alert-info" role="alert" style="text-align: center;padding-bottom: 0px;">
-    <p class="fs-4 fw-bolder">Pagamentos de Integrantes </p>
+
+  <div *ngIf="!exibirDetalhe">
+    <!-- Title -->
+    <div class="alert alert-info" role="alert" style="text-align: center;padding-bottom: 0px;">
+      <p class="fs-4 fw-bolder">Pagamentos de Integrantes </p>
+    </div>
+
+    <div class="p-field p-col-12 p-md-5 text-center">
+      <label style="margin-right: 10px;" for="icon">Escolha uma data:</label>
+      <p-calendar [(ngModel)]="dataSelecionada" dateFormat="dd/mm/yy" [showIcon]="true" inputId="icon"></p-calendar>
+      <button type="button" class="btn btn-success" style="width: 80px; margin-left: 10px;"  (click)="buscarDevedores()">Buscar
+      </button>
+    </div>
+
+    <!-- Tabela de cobranca-->
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col" class="col-md-1">#Id</th>
+          <th scope="col" class="col-md-3">Nome</th>
+          <th scope="col" class="col-md-2">Valor Total</th>
+          <th scope="col" class="col-md-2">Pagar conta</th>
+          <th scope="col" class="col-md-2">Detalhe</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row">
+            <label value="1" ></label>
+          </td>
+          <td>coveiro</td>
+          <td>75,00</td>
+          <td>
+            <button type="button" class="btn btn-success" style="width: 80px;">Pagar</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-warning" style="width: 80px;" (click)="goToDetail()">Detalhe</button>
+          </td>
+        </tr>
+      </tbody> 
+    </table>
   </div>
 
-  <div class="p-field p-col-12 p-md-5 text-center">
-    <label for="icon">Selecione a data: </label>
-    <p-calendar [(ngModel)]="dataSelecionada" dateFormat="dd/mm/yy" [showIcon]="true" inputId="icon"></p-calendar>
-    <button type="button" class="btn btn-success" style="width: 80px; margin-left: 10px;"  (click)="buscarDevedores()">Buscar
-    </button>
+  <div *ngIf="exibirDetalhe">
+    <button type="button" class="btn btn-warning" style="width: 80px;" (click)="backToPagamentos()">Voltar</button>
+    <app-pagamento-detalhe [idIntegrante] = "idIntegranteSelecionado"></app-pagamento-detalhe>
   </div>
+
 </div>

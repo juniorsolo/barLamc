@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 export class PagamentosComponent implements OnInit {
 
   dataSelecionada : Date = new Date();
-
+  exibirDetalhe : boolean = false;
+  idIntegranteSelecionado : number = 22;
+  
   constructor() { }
 
   ngOnInit() {
@@ -15,5 +17,13 @@ export class PagamentosComponent implements OnInit {
 
   buscarDevedores(){
     console.log(this.dataSelecionada.toJSON());
+  }
+
+  goToDetail(){
+    this.exibirDetalhe = true;
+  }
+
+  backToPagamentos(){
+    this.exibirDetalhe = false;
   }
 }

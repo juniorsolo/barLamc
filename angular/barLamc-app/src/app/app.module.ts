@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CobrancaDetalheComponent } from './cobrancas/cobranca-detalhe/cobranca-detalhe.component';
 import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { PagamentoDetalheComponent } from './pagamentos/pagamento-detalhe/pagamento-detalhe.component';
 
 @NgModule({
   declarations: [									
@@ -30,6 +31,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
       PagamentosComponent,
       CobrancasComponent,
       CobrancaDetalheComponent,
+      PagamentoDetalheComponent,
       PageNotFoundComponent
    ],
   imports: [
