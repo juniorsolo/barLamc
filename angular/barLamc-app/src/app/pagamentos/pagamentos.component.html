@@ -28,8 +28,8 @@
           <td scope="row">
             <label value="1" ></label>
           </td>
-          <td>coveiro</td>
-          <td>75,00</td>
+          <td><p class="text-uppercase">coveiro</p></td>
+          <td>42,00</td>
           <td>
             <button type="button" class="btn btn-success" style="width: 80px;">Pagar</button>
           </td>
@@ -42,8 +42,8 @@
   </div>
 
   <div *ngIf="exibirDetalhe">
-    <button type="button" class="btn btn-warning" style="width: 80px;" (click)="backToPagamentos()">Voltar</button>
     <app-pagamento-detalhe [idIntegrante] = "idIntegranteSelecionado"></app-pagamento-detalhe>
+    <button type="button" class="btn btn-warning" style="width: 80px;" (click)="backToPagamentos()">Voltar</button>
   </div>
 
 </div>
