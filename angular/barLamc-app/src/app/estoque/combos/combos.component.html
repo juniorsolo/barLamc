@@ -1,0 +1,45 @@
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col" class="col-md-5">Produto</th>
+      <th scope="col" class="col-md-2">Preço Unitário</th>
+      <th scope="col" class="col-md-1">Combo</th>
+      <th scope="col" class="col-md-1">Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Duplo Malte</th>
+      <td>R$: 6,00</td>
+      <td> 3 x R$:15,00</td>
+      <td>
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalEditarCombo" >
+        </button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+<div class="modal fade" id="modalEditarCombo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Incluir Produto</h5>  
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="produto-name" class="col-form-label">Nome:</label>
+          <input type="text" class="form-control" id="produto-name"   />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Incluir</button>
+      </div>
+    </div>
+  </div>
+</div>

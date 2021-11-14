@@ -11,8 +11,9 @@ declare var $:any;
   templateUrl: './estoque.component.html'
 })
 export class EstoqueComponent implements OnInit {
-
+  
   iconeEstoque = faStore;
+  menuSelecionado : string = '';
 
   @ViewChild(ProdutosComponent)
   produtoChild!: ProdutosComponent;
@@ -75,6 +76,7 @@ export class EstoqueComponent implements OnInit {
 }
 
   ngOnInit() {
+    this.menuSelecionado = 'PRODUTOS';
   }
 
 }

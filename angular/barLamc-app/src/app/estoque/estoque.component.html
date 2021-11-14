@@ -6,12 +6,29 @@
     <p class="fs-4 fw-bolder">Gerenciamento de Estoque L.A.M.C <fa-icon [icon]="iconeEstoque"></fa-icon></p>
   </div>
 
-  <app-produtos [produtos]="produtosEst"></app-produtos>
+  <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="margin-bottom: 10px; width: 100%;">
+    <input type="radio" class="btn-check" name="btnradio" id="btnProdutos" value="PRODUTOS" [(ngModel)]="menuSelecionado" autocomplete="off" checked>
+    <label class="btn btn-outline-info" style="width: 200px;" for="btnProdutos">Produtos</label>
+  
+    <input type="radio" class="btn-check" name="btnradio" id="btnPreco" value="COMBOS" [(ngModel)]="menuSelecionado"  autocomplete="off">
+    <label class="btn btn-outline-info" style="width: 200px;" for="btnPreco">Preços e combos</label>
+  
+    <input type="radio" class="btn-check" name="btnradio" id="btnEstoque" value="ESTOQUE" [(ngModel)]="menuSelecionado" autocomplete="off">
+    <label class="btn btn-outline-info" style="width: 200px;" for="btnEstoque">Estoque</label>
+  </div>
 
-  <div>
+  <!-- PRODUTOS-->
+  <div *ngIf="menuSelecionado == 'PRODUTOS'"><app-produtos [produtos]="produtosEst"></app-produtos></div>
+  
+  <div *ngIf="menuSelecionado == 'PRODUTOS'">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIncluirProduto">Incluir novo produto</button> 
   </div>
 
+  
+  <!-- COMBOS-->
+  <div *ngIf="menuSelecionado == 'COMBOS'"><app-combos></app-combos></div>
+
+  
   <!-- Modal incluir produto-->
 <div class="modal fade" id="modalIncluirProduto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
 aria-labelledby="staticBackdropLabel" aria-hidden="true">

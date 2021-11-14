@@ -18,6 +18,7 @@ import { CobrancaDetalheComponent } from './cobrancas/cobranca-detalhe/cobranca-
 import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PagamentoDetalheComponent } from './pagamentos/pagamento-detalhe/pagamento-detalhe.component';
+import { CombosComponent } from './estoque/combos/combos.component';
 
 @NgModule({
   declarations: [									
@@ -28,6 +29,7 @@ import { PagamentoDetalheComponent } from './pagamentos/pagamento-detalhe/pagame
       LancamentosComponent,
       EstoqueComponent,
       ProdutosComponent,
+      CombosComponent,
       PagamentosComponent,
       CobrancasComponent,
       CobrancaDetalheComponent,
