@@ -28,7 +28,25 @@
   <!-- COMBOS-->
   <div *ngIf="menuSelecionado == 'COMBOS'"><app-combos></app-combos></div>
 
-  
+  <!-- Estoque -->
+  <div *ngIf="menuSelecionado == 'ESTOQUE'">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col" class="col-md-3">Produto</th>
+          <th scope="col" class="col-md-1">Quantidade</th>
+          <th scope="col" class="col-md-2">Preço Unitário Adquirido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Duplo Malte</th>
+          <td>180</td>
+          <td>R$: 2,75</td>
+        </tr>    
+      </tbody>
+    </table>
+  </div>
   <!-- Modal incluir produto-->
 <div class="modal fade" id="modalIncluirProduto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
 aria-labelledby="staticBackdropLabel" aria-hidden="true">
