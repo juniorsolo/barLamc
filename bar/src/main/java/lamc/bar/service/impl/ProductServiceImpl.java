@@ -45,5 +45,17 @@ public class ProductServiceImpl implements ProductService {
 			return null;
 		}
 	}
+	
+	@Override
+	public Product save(Product product) {
+		try {
+			return productRepo.save(product);
+		}catch (Exception e) {
+			log.error(e.getMessage());
+			return null;
+		}
+	}
+	
+
 
 }

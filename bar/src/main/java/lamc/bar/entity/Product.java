@@ -30,7 +30,7 @@ public class Product {
 	@JsonProperty("id")
 	private Integer id;
 	
-	@Column(insertable = false)
+	@Column(nullable = false)
 	@JsonProperty("name")
 	private String name;
 	
