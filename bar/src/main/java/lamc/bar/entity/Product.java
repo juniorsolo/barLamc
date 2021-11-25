@@ -9,6 +9,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "product")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 	
 	@Id
@@ -32,7 +34,7 @@ public class Product {
 	
 	@Column(nullable = false)
 	@JsonProperty("name")
-	private String name;
+	private  String name;
 	
 	@JsonProperty("active")
 	private Boolean active = Boolean.TRUE;
