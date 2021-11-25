@@ -8,42 +8,42 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lamc.bar.entity.Member;
-import lamc.bar.repository.MemberRepository;
-import lamc.bar.service.MemberService;
+import lamc.bar.entity.Product;
+import lamc.bar.repository.ProductRepository;
+import lamc.bar.service.ProductService;
 
 /**
- * 23/11/2021
+ * 24/11/2021
  * 
- * @author Junior.solo Coveiro
+ * @author junior.solo - Coveiro
  *
  */
 @Service
-public class MemberServiceImpl implements MemberService {
+public class ProductServiceImpl implements ProductService {
 	
-	Logger log = LoggerFactory.getLogger(MemberServiceImpl.class);
-
+	Logger log = LoggerFactory.getLogger(ProductServiceImpl.class);
+	
 	@Autowired
-	MemberRepository memberRepo;
+	private ProductRepository productRepo;
 	
 	@Override
-	public List<Member> findAll() {
+	public List<Product> findAll() {
 		try {
-			return memberRepo.findAll();
+			return productRepo.findAll();
 		}catch (Exception e) {
 			log.error(e.getMessage());
 			return null;
 		}
 	}
-	
+
 	@Override
-	public Optional<Member> findById(Integer id) {
+	public Optional<Product> findById(Integer id) {
 		try {
-			return memberRepo.findById(id);
+			return productRepo.findById(id);
 		}catch (Exception e) {
 			log.error(e.getMessage());
 			return null;
 		}
 	}
-	
+
 }

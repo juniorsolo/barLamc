@@ -11,17 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 /**
- * 23/11/2021
+ * 24/11/2021
  * 
- * @author Coveiro
+ * @author junior.solo - Coveiro
  *
  */
 @Entity
-@Table(name="member")
+@Table(name = "product")
 @Data
 @NoArgsConstructor
-public class Member {
+public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
@@ -29,8 +30,10 @@ public class Member {
 	@JsonProperty("id")
 	private Integer id;
 	
-	@Column(nullable = false)
+	@Column(insertable = false)
 	@JsonProperty("name")
 	private String name;
 	
+	@JsonProperty("active")
+	private Boolean active = Boolean.TRUE;
 }

@@ -1,4 +1,4 @@
-package lamc.bar;
+package lamc.bar.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
