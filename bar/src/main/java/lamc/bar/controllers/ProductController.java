@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,7 +39,7 @@ public class ProductController {
 	public ResponseEntity<Response<List<Product>>> allProducts(){
 		Response<List<Product>> response = new Response<>();
 		try {
-			List<Product> lista =  productService.findAll();
+			List<Product> lista =  productService.findAllActive();
 			response.setData(lista);
 			return ResponseEntity.ok(response);
 		}catch (Exception e) {
@@ -78,6 +79,7 @@ public class ProductController {
 	
 	
 	@PostMapping
+	@PreAuthorize("hasAnyRole('STOCKHOLDER', 'ADMIN')")
 	public ResponseEntity<Response<Product>> createProduct(@RequestBody Product productReq, BindingResult result){
 		
 		Response<Product> response = new Response<>();
@@ -108,6 +110,7 @@ public class ProductController {
 	}
 	
 	@PutMapping
+	@PreAuthorize("hasAnyRole('STOCKHOLDER', 'ADMIN')")
 	public ResponseEntity<Response<Product>> updateProduct(@RequestBody Product productReq, BindingResult result){
 		Response<Product> response = new Response<>();
 		try {
@@ -143,6 +146,7 @@ public class ProductController {
 	}
 	
 	@DeleteMapping
+	@PreAuthorize("hasAnyRole('STOCKHOLDER', 'ADMIN')")
 	public ResponseEntity<Response<Product>> deleteProduct(@RequestBody Integer id, BindingResult result){
 		Response<Product> response = new Response<>();
 		try {

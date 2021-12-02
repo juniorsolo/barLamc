@@ -35,6 +35,16 @@ public class ProductServiceImpl implements ProductService {
 			return null;
 		}
 	}
+	
+	@Override
+	public List<Product> findAllActive() {
+		try {
+			return productRepo.findByActive(true);
+		}catch (Exception e) {
+			log.error(e.getMessage());
+			return null;
+		}
+	}
 
 	@Override
 	public Optional<Product> findById(Integer id) {
