@@ -1,5 +1,7 @@
 package lamc.bar.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,8 +23,10 @@ import lombok.NoArgsConstructor;
 @Table(name="member")
 @Data
 @NoArgsConstructor
-public class Member {
+public class Member implements Serializable{
 	
+	private static final long serialVersionUID = -660075122938619464L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
 	@Column(nullable = false)

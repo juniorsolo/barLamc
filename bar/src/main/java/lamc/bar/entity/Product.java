@@ -1,5 +1,6 @@
 package lamc.bar.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -29,8 +30,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class Product implements Serializable{
 	
+	private static final long serialVersionUID = -3986506577528940655L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
 	@Column(nullable = false)
