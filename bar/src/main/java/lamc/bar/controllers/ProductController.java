@@ -79,7 +79,7 @@ public class ProductController {
 	
 	
 	@PostMapping
-	@PreAuthorize("hasAnyRole('STOCKHOLDER', 'ADMIN')")
+	//@PreAuthorize("hasAnyRole('STOCKHOLDER', 'ADMIN')")
 	public ResponseEntity<Response<Product>> createProduct(@RequestBody Product productReq, BindingResult result){
 		
 		Response<Product> response = new Response<>();
@@ -110,7 +110,7 @@ public class ProductController {
 	}
 	
 	@PutMapping
-	@PreAuthorize("hasAnyRole('STOCKHOLDER', 'ADMIN')")
+	//@PreAuthorize("hasAnyRole('STOCKHOLDER', 'ADMIN')")
 	public ResponseEntity<Response<Product>> updateProduct(@RequestBody Product productReq, BindingResult result){
 		Response<Product> response = new Response<>();
 		try {

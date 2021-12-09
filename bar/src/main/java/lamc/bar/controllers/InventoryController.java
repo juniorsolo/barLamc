@@ -1,5 +1,6 @@
 package lamc.bar.controllers;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lamc.bar.entity.Inventory;
+import lamc.bar.entity.Product;
 import lamc.bar.response.Response;
 import lamc.bar.service.InventoryService;
+import lamc.bar.service.ProductService;
 
 /**
  * 03/12/2021
@@ -37,6 +41,9 @@ public class InventoryController {
 	
 	@Autowired
 	private InventoryService inventoryService;
+	
+	@Autowired
+	private ProductService productService;
 
 	@GetMapping(value = "{idProduto}")
 	public ResponseEntity<Response<List<Inventory>>> inventoryByProduto(@PathVariable Integer idProduto) {
@@ -44,17 +51,20 @@ public class InventoryController {
 		Response<List<Inventory>> response = new Response<>();
 
 		try {
-			if (idProduto == null || idProduto == 0) {
-				response.getErrors().add("Id of product invalid for inventory.");
+			if (idProduto == null || idProduto <= 0) {
+				response.getErrors().add("Id do produto inválido.");
 				return ResponseEntity.badRequest().body(response);
 			}
-
+			
+			Optional<Product> productFinded = productService.findById(idProduto);
+			
+			if(!productFinded.isPresent()) {
+				response.getErrors().add("O produto informado esta incorreto.");
+				return ResponseEntity.badRequest().body(response);
+			}
+			
 			List<Inventory> listInventory = inventoryService.findAllActiveByIdProduto(idProduto);
 
-//			if (listInventory == null || listInventory.isEmpty()) {
-//				response.getErrors().add("Inventory not found.");
-//				return ResponseEntity.badRequest().body(response);
-//			}
 
 			response.setData(listInventory);
 			return ResponseEntity.ok(response);
@@ -69,12 +79,23 @@ public class InventoryController {
 	public ResponseEntity<Response<Inventory>> createInventory(@RequestBody Inventory inventoryReq, BindingResult result){
 		Response<Inventory> response = new Response<>();
 		try {
-			//this.validateCreate(productReq, result);
+			this.validateCreate(inventoryReq, result);
 			if (result.hasErrors()) {
 				result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 				return ResponseEntity.badRequest().body(response);
 			}
-			inventoryReq.setDataLancamento(new Date());
+			
+			//Obtendo produto...
+			Optional<Product> productFinded = productService.findById(inventoryReq.getProduct().getId());
+			
+			if(productFinded.isEmpty()) {
+				response.getErrors().add("Produto informado é invalido.");
+				return ResponseEntity.badRequest().body(response);
+			}
+			
+			inventoryReq.setActive(true);
+			inventoryReq.setRelaseDate(new Date());
+			inventoryReq.setProduct(productFinded.get());
 			Inventory inventorySave =  inventoryService.save(inventoryReq);
 			response.setData(inventorySave);
 			return ResponseEntity.ok(response);			
@@ -82,6 +103,21 @@ public class InventoryController {
 			response.getErrors().add("Inventory can't be created." + e.getMessage());
 			log.error("Error Inventory can't be created." + e.getMessage());
 			return ResponseEntity.badRequest().body(response);
+		}
+	}
+	
+	private void validateCreate(Inventory inventoryReq, BindingResult result) {
+		if(inventoryReq == null ) {
+			result.addError(new ObjectError("Inventory", "inventório invalido."));
+		}
+		if(inventoryReq.getProduct() == null || inventoryReq.getProduct().getId() <= 0) {
+			result.addError(new ObjectError("Inventory", "Produto inválido."));
+		}
+		if(inventoryReq.getQuantity() == null || inventoryReq.getQuantity() <= 0) {
+			result.addError(new ObjectError("Inventory", "Quantidade inválida."));
+		}
+		if(inventoryReq.getCostPrice() == null || inventoryReq.getCostPrice() == BigDecimal.ZERO) {
+			result.addError(new ObjectError("Inventory", "Preço de custo inválido."));
 		}
 	}
 	

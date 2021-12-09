@@ -2,10 +2,12 @@ package lamc.bar.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import lamc.bar.entity.Inventory;
 import lamc.bar.repository.InventoryRepository;
 import lamc.bar.service.InventoryService;
@@ -25,13 +27,13 @@ public class InventoryServiceImpl implements InventoryService{
 	private InventoryRepository inventoryRepo;
 	
 	@Override
-	public List<Inventory> findAllActiveByIdProduto(Integer idProduto) {
+	public List<Inventory> findAllActiveByIdProduto(Integer id) {
 		try {
-			return inventoryRepo.findByActiveAndIdProduto(Boolean.TRUE, idProduto);
+			return inventoryRepo.findByActiveAndProduct_id(Boolean.TRUE, id);
 		}catch (Exception e) {
 			log.error(e.getMessage());
-			return null;
 		}
+		return null;
 	}
 
 	@Override

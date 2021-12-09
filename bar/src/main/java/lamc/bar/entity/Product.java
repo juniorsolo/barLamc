@@ -1,12 +1,17 @@
 package lamc.bar.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -38,4 +43,12 @@ public class Product {
 	
 	@JsonProperty("active")
 	private Boolean active = Boolean.TRUE;
+	
+	@JsonIgnore
+	@OneToMany(
+	        mappedBy = "product",
+	        orphanRemoval = true,
+	        fetch = FetchType.LAZY
+	    )
+	private List<Inventory> inventoryList;
 }
