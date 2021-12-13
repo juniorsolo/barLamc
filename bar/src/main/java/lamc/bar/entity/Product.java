@@ -3,6 +3,7 @@ package lamc.bar.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -40,12 +42,16 @@ public class Product implements Serializable{
 	@JsonProperty("id")
 	private Integer id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 30)
 	@JsonProperty("name")
 	private  String name;
 	
 	@JsonProperty("active")
 	private Boolean active = Boolean.TRUE;
+	
+	@OneToOne(mappedBy = "product", cascade = CascadeType.PERSIST,
+            fetch = FetchType.LAZY, optional = true)
+	private Price price;
 	
 	@JsonIgnore
 	@OneToMany(
@@ -54,4 +60,5 @@ public class Product implements Serializable{
 	        fetch = FetchType.LAZY
 	    )
 	private List<Inventory> inventoryList;
+	
 }

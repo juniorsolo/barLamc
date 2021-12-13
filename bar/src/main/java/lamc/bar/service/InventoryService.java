@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import lamc.bar.entity.Inventory;
-import lamc.bar.entity.Product;
 
 /**
  * 02/12/2021

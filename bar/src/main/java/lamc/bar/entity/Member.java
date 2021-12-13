@@ -33,7 +33,7 @@ public class Member implements Serializable{
 	@JsonProperty("id")
 	private Integer id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false , length = 25)
 	@JsonProperty("name")
 	private String name;
 	

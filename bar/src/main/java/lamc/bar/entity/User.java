@@ -36,12 +36,13 @@ public class User implements Serializable{
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name= "userName", unique = true)
+	@Column(name= "userName", unique = true, length = 25, nullable = false)
 	private String userName;
 	
 	@Column(name = "password")
 	private String password;
 	
+	@Column(name = "profile", length = 25)
 	@Enumerated(EnumType.STRING)
 	private ProfileEnum profile;
  
