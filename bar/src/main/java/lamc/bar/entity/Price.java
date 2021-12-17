@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -46,17 +47,27 @@ public class Price implements Serializable{
 	private Integer  promotionQuantity;
 	
 	@JsonProperty("promotionPrice")
-	private BigDecimal promotionPrice;
+	private BigDecimal promotionPrice;	
 	
-	@JsonProperty("active")
-	private Boolean active;
-	
+	@JsonProperty("dateCreate")
 	private Date dateCreate;
 	
+	@JsonProperty("dateEnd")
 	private Date dateEnd;
 	
-	@JsonProperty("product")
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.EAGER)
 	private Product product;
 	
+	public String toString() {
+		String productId = this.product == null || this.product.getId() == null ? "" : this.product.getId().toString();
+		return "id:" + this.id +"\n" +
+	    "priceUnity:" + this.priceUnity + "\n" +
+        "promotionQuantity:" + this.promotionQuantity + "\n" + 
+        "dateCreate:" + this.dateCreate + "\n" +
+	    "dateEnd:" + this.dateEnd +
+	    "ProductId:" + productId;
+
+	}
+
 }

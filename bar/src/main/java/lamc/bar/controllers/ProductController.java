@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lamc.bar.entity.Price;
 import lamc.bar.entity.Product;
 import lamc.bar.response.Response;
+import lamc.bar.service.PriceService;
 import lamc.bar.service.ProductService;
 
 @RestController
@@ -34,6 +35,9 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	PriceService priceService;
 	
 	@GetMapping
 	public ResponseEntity<Response<List<Product>>> allProducts(){
@@ -145,9 +149,9 @@ public class ProductController {
 
 	}
 	
-	@DeleteMapping
-	@PreAuthorize("hasAnyRole('STOCKHOLDER', 'ADMIN')")
-	public ResponseEntity<Response<Product>> deleteProduct(@RequestBody Integer id, BindingResult result){
+	@DeleteMapping(value = "{id}")
+//	@PreAuthorize("hasAnyRole('STOCKHOLDER', 'ADMIN')")
+	public ResponseEntity<Response<Product>> deleteProduct(@PathVariable("id") Integer id){
 		Response<Product> response = new Response<>();
 		try {
 			Optional<Product> productFinded =  productService.findById(id);
@@ -163,6 +167,28 @@ public class ProductController {
 			log.error("Error product can't be deleted." + e.getMessage());
 			return ResponseEntity.badRequest().body(response);
 		}
+	}
+	
+	@PostMapping("/price/{idProduct}")
+	public ResponseEntity<Response<Product>> createPriceForProduct(@RequestBody Price price, @PathVariable("idProduct") Integer idProduct) {
+		Response<Product> response = new Response<>();	
+		try {
+			Optional<Product> productFinded =  productService.findById(idProduct);
+			if(!productFinded.isPresent() ) {
+				response.getErrors().add("Não é um produto válido");
+				return ResponseEntity.badRequest().body(response);
+			}
+			
+			Product productSave = productService.savePrice(idProduct, price);
+			response.setData(productSave);
+			return ResponseEntity.ok(response);			
+		}catch (Exception e) {
+			response.getErrors().add("Product can't be deleted." + e.getMessage());
+			log.error("Error product can't be deleted." + e.getMessage());
+			return ResponseEntity.badRequest().body(response);
+		}
+		
+		
 	}
 
 }

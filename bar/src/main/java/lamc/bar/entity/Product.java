@@ -49,6 +49,7 @@ public class Product implements Serializable{
 	@JsonProperty("active")
 	private Boolean active = Boolean.TRUE;
 	
+	@JsonProperty("price")
 	@OneToOne(mappedBy = "product", cascade = CascadeType.PERSIST,
             fetch = FetchType.LAZY, optional = true)
 	private Price price;
